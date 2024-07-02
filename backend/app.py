@@ -2,9 +2,9 @@ from flask import Flask, request, jsonify
 from werkzeug.utils import secure_filename
 from flask_cors import CORS
 import os
-from PyPDF2 import PdfReader
 import json
 from extract import get_cost_info
+from tools import pdf_to_text
 
 app = Flask(__name__)
 CORS(app)
@@ -33,9 +33,7 @@ def upload_file():
         # Extract text from the PDF
         text = ''
         with open(file_path, 'rb') as pdf_file:
-            reader = PdfReader(pdf_file)
-            for page in reader.pages:
-                text += page.extract_text() or ''  # Safeguard against None return
+            text = pdf_to_text(pdf_file)
         
         # Extract info from the text
         extracted_info = get_cost_info(text)
