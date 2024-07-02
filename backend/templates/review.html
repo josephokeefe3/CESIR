@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Review Extracted Information</title>
+</head>
+<body>
+  <h1>Review Extracted Information</h1>
+  <form action="/submit" method="post">
+    <h2>Original Text</h2>
+    <textarea name="text" rows="10" cols="50">{{ text }}</textarea>
+    
+    <h2>Extracted Information</h2>
+    <textarea name="extracted_info" rows="10" cols="50">{{ extracted_info }}</textarea>
+    
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>
